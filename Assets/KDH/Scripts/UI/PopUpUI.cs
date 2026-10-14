@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace KDH.Scripts.UI
 {
-    public class PopupUI : MonoBehaviour
+    public class PopUpUI : MonoBehaviour
     {
         [SerializeField] private GameObject target;
         [SerializeField] private Vector3 minSize;

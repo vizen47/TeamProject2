@@ -1,5 +1,6 @@
 using KDH.Scripts.CoreLib;
 using KDH.Scripts.Systems;
+using UnityEngine;
 
 namespace KDH.Scripts
 {
@@ -19,9 +20,25 @@ namespace KDH.Scripts
             _countChildren = transform.childCount;
         }
 
-        void ChangeChild()
+        public void ChangeChild()
         {
             _currentApplication.GameObject.transform.SetAsLastSibling();
+        }
+
+        public void DisableApplications()
+        {
+            IApplicable[] childGO = GetComponentsInChildren<IApplicable>();
+
+            foreach (var entity in childGO)
+                entity.HandleChangeActive();
+        }
+
+        public void DisableWorkFrameApps()
+        {
+            IApplicable[] childGO = GetComponentsInChildren<IApplicable>();
+
+            foreach (var entity in childGO)
+                entity.SetUnEnableWorkApp(false);
         }
     }
 }

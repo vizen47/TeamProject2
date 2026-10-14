@@ -9,7 +9,7 @@ namespace KDH.Scripts.Laptop
     public class Laptop : MonoSingleton<Laptop>, IPointerEnterHandler, IPointerExitHandler
     {
         [field: SerializeField] public GameObject MonitorScreen { get; private set; }
-        private PopupUI _popuiUI;
+        private PopUpUI _popUiUI;
 
         public event Action OnChangeActive;
         public bool IsActive { get; private set; }
@@ -18,12 +18,12 @@ namespace KDH.Scripts.Laptop
         {
             base.Awake();
             
-            _popuiUI = GetComponentInChildren<PopupUI>();
+            _popUiUI = GetComponentInChildren<PopUpUI>();
         }
 
         void Start()
         {
-            OnChangeActive += _popuiUI.ActiveAnimation;      
+            OnChangeActive += _popUiUI.ActiveAnimation;      
             
             MonitorScreen.SetActive(true); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
             OnChangeActive?.Invoke(); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
@@ -33,7 +33,7 @@ namespace KDH.Scripts.Laptop
         {
             base.OnDestroy();
             
-            OnChangeActive -= _popuiUI.ActiveAnimation;    
+            OnChangeActive -= _popUiUI.ActiveAnimation;    
         }
 
         public void HandleChangeActive()

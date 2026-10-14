@@ -8,19 +8,19 @@ namespace KDH.Scripts.Internet
     public class Internet : MonoBehaviour, IApplicable
     {
         [field: SerializeField] public GameObject TargetApplication { get; set; }
-        private PopupUI _popuiUI;
-
+        [field: SerializeField] public GameObject WorkApp { get; set; }
         public GameObject GameObject => gameObject;
         public event Action OnChangeActive;
+        private PopUpUI _popUiUI;
 
         void Awake()
         {
-            _popuiUI = GetComponentInChildren<PopupUI>();
+            _popUiUI = GetComponentInChildren<PopUpUI>();
         }
 
         void Start()
         {
-            OnChangeActive += _popuiUI.ActiveAnimation;      
+            OnChangeActive += _popUiUI.ActiveAnimation;      
             
             TargetApplication.SetActive(true); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
             OnChangeActive?.Invoke(); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
@@ -28,13 +28,18 @@ namespace KDH.Scripts.Internet
 
         void OnDestroy()
         {
-            OnChangeActive -= _popuiUI.ActiveAnimation;    
+            OnChangeActive -= _popUiUI.ActiveAnimation;    
         }
 
         public void HandleChangeActive()
         {
             OnChangeActive?.Invoke();
             ApplicationController.Instance.Init(this);
+        }
+        
+        public void SetUnEnableWorkApp(bool isActive)
+        {
+            WorkApp.SetActive(isActive);
         }
     }
 }

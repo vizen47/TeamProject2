@@ -1,6 +1,5 @@
 using KDH.Scripts.CoreLib;
 using KDH.Scripts.Systems;
-using UnityEngine;
 
 namespace KDH.Scripts
 {
@@ -35,7 +34,7 @@ namespace KDH.Scripts
 
         public void DisableWorkFrameApps()
         {
-            IApplicable[] childGO = GetComponentsInChildren<IApplicable>();
+            IApplicable[] childGO = GetComponentsInChildren<IApplicable>(true);
 
             foreach (var entity in childGO)
                 entity.SetUnEnableWorkApp(false);

@@ -1,42 +1,47 @@
 using KDH.Scripts.CoreLib;
 using KDH.Scripts.Systems;
+using UnityEngine;
 
 namespace KDH.Scripts
 {
     public class ApplicationController : MonoSingleton<ApplicationController>
     {
+        [SerializeField] private GameObject[] childGO;
+        private IApplicable[] _applicable = new IApplicable[2];
+        private IApplicable _currentApplication;
+
+        void Awake()
+        {
+            for(int i = 0; i < childGO.Length; i++)
+            {
+                _applicable[i] = childGO[i].GetComponent<IApplicable>();
+            }
+        }
+        
         public void Init(IApplicable applicable)
         {
             _currentApplication = applicable;
             ChangeChild();
         }
 
-        private IApplicable _currentApplication;
-        private int _countChildren;
-
-        void Start()
-        {
-            _countChildren = transform.childCount;
-        }
-
+        
         public void ChangeChild()
         {
-            _currentApplication.GameObject.transform.SetAsLastSibling();
+            _currentApplication.TargetApplication.transform.SetAsLastSibling();
         }
 
         public void DisableApplications()
         {
-            IApplicable[] childGO = GetComponentsInChildren<IApplicable>();
-
-            foreach (var entity in childGO)
+            foreach (var entity in _applicable)
+            {
+                entity.TargetApplication.SetActive(true);
                 entity.HandleChangeActive();
+            }
         }
 
         public void DisableWorkFrameApps()
         {
-            IApplicable[] childGO = GetComponentsInChildren<IApplicable>(true);
-
-            foreach (var entity in childGO)
+            foreach (var entity in _applicable)
                 entity.SetUnEnableWorkApp(false);
         }
     }

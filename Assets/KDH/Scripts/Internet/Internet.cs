@@ -9,15 +9,10 @@ namespace KDH.Scripts.Internet
     {
         [field: SerializeField] public GameObject TargetApplication { get; set; }
         [field: SerializeField] public GameObject WorkApp { get; set; }
+        [SerializeField] private PopUpUI _popUiUI;
         public GameObject GameObject => gameObject;
         public event Action OnChangeActive;
-        private PopUpUI _popUiUI;
-
-        void Awake()
-        {
-            _popUiUI = GetComponentInChildren<PopUpUI>();
-        }
-
+      
         void Start()
         {
             OnChangeActive += _popUiUI.ActiveAnimation;      

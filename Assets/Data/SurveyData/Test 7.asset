@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18934e7e875cc9543ad6b49caf533b36, type: 3}
   m_Name: Test 7
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Survey.SurveyQuizSO
-  level: 0
+  level: 1
   mainQuizText: "\uC774\uAC74 \uD14C\uC2A4\uD2B8 \uC124\uBB38\uC870\uC0AC7\uC785\uB2C8\uB2E4.
     [\uC774\uC0C1\uD604\uC0C1]"
   weirdQuiz: 1

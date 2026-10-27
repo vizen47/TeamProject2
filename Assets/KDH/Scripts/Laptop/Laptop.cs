@@ -10,7 +10,7 @@ namespace KDH.Scripts.Laptop
     {
         [field: SerializeField] public GameObject MonitorScreen { get; private set; }
         [field: SerializeField] public GameObject Keyboard { get; private set; }
-        [SerializeField] private SlideUpUI[] slideUpUI;
+        [SerializeField] private SlideUpUIMotion[] slideUpUI;
         
         public event Action OnChangeActive;
         public bool IsActive { get; private set; }
@@ -19,7 +19,7 @@ namespace KDH.Scripts.Laptop
         {
             base.Awake();
             
-            slideUpUI = GetComponentsInChildren<SlideUpUI>();
+            slideUpUI = GetComponentsInChildren<SlideUpUIMotion>();
         }
 
         void Start()

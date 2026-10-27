@@ -9,13 +9,13 @@ namespace KDH.Scripts.Internet
     {
         [field: SerializeField] public GameObject TargetApplication { get; set; }
         [field: SerializeField] public GameObject WorkApp { get; set; }
-        [SerializeField] private PopUpUI _popUiUI;
+        [SerializeField] private PopUpUIMotion popUIMotionUIMotion;
         public GameObject GameObject => gameObject;
         public event Action OnChangeActive;
       
         void Start()
         {
-            OnChangeActive += _popUiUI.ActiveAnimation;      
+            OnChangeActive += popUIMotionUIMotion.ActiveAnimation;      
             
             TargetApplication.SetActive(true); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
             OnChangeActive?.Invoke(); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
@@ -23,7 +23,7 @@ namespace KDH.Scripts.Internet
 
         void OnDestroy()
         {
-            OnChangeActive -= _popUiUI.ActiveAnimation;    
+            OnChangeActive -= popUIMotionUIMotion.ActiveAnimation;    
         }
 
         public void HandleChangeActive()

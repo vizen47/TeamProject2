@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18934e7e875cc9543ad6b49caf533b36, type: 3}
   m_Name: Test 1
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Survey.SurveyQuizSO
-  level: 0
-  mainQuizText: "\uC774\uAC74 \uD14C\uC2A4\uD2B8 \uC124\uBB38\uC870\uC0AC1\uC785\uB2C8\uB2E4."
+  level: 1
+  mainQuizText: "\uBC18\uAC11\uC2B5\uB2C8\uB2E4. \uC2DC\uAC04\uC774 \uC5C6\uAE30
+    \uB54C\uBB38\uC5D0 \uC77C\uB2E8 \uC800\uD76C\uB97C \uC18C\uAC1C\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
   weirdQuiz: 0
   normalAnswer: 0
   weirdAnswer: 0

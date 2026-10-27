@@ -7,6 +7,7 @@ namespace KDH.Scripts.Survey
     public struct WeirdSurveyLevelCount
     {
         [Header("이상현상 설문 난이도의 개수")]
+        public int tutorialCount;
         public int easyCount;
         public int normalCount;
         public int hardCount;

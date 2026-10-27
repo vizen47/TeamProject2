@@ -1,9 +1,9 @@
 using System;
+using System.Collections.Generic;
 using KDH.Scripts.Systems;
 using KDH.Scripts.UI;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace KDH.Scripts.Survey
@@ -14,20 +14,23 @@ namespace KDH.Scripts.Survey
         [field: SerializeField] public GameObject WorkApp { get; set; }
         [SerializeField] private Button _yesBtn, _idkBtn, _noBtn;
         [SerializeField] private TextMeshProUGUI _quizText;
-        [SerializeField ] private PopUpUI _popUiUI;
+        [SerializeField ] private PopUpUIMotion popUIMotionUIMotion;
         private int _currentSurveyIndex;
+        public bool HasCompletedSurvey { get; private set; }
         public GameObject GameObject => gameObject;
         
         public event Action OnChangeActive;
+
+        private bool _hasClearedTuto;
         
         void Awake()
         {
-            _popUiUI = GetComponentInChildren<PopUpUI>();
+            popUIMotionUIMotion = GetComponentInChildren<PopUpUIMotion>();
         }
 
         void Start()
         {
-            OnChangeActive += _popUiUI.ActiveAnimation;
+            OnChangeActive += popUIMotionUIMotion.ActiveAnimation;
             
             TargetApplication.SetActive(true); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
             OnChangeActive?.Invoke(); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
@@ -40,17 +43,11 @@ namespace KDH.Scripts.Survey
 
         void OnDestroy()
         {
-            OnChangeActive -= _popUiUI.ActiveAnimation;
+            OnChangeActive -= popUIMotionUIMotion.ActiveAnimation;
             
             _yesBtn.onClick.RemoveAllListeners();
             _idkBtn.onClick.RemoveAllListeners();
             _noBtn.onClick.RemoveAllListeners();
-        }
-
-        void Update()
-        {
-            if (Keyboard.current.tKey.wasPressedThisFrame)
-                InitSurvey();
         }
         
         #region UI
@@ -69,75 +66,77 @@ namespace KDH.Scripts.Survey
         #endregion
 
         public void InitSurvey()
-        {   
-            AddNormalSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].normalSurveyLevelCount.easyCount,
-                SurveyQuizSO.Level.Easy);
-            AddNormalSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].normalSurveyLevelCount.normalCount,
-                SurveyQuizSO.Level.Normal);
-            AddNormalSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].normalSurveyLevelCount.hardCount,
-                SurveyQuizSO.Level.Hard);
-            AddNormalSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].normalSurveyLevelCount.insaneCount,
-                SurveyQuizSO.Level.Insane);
-            AddWeirdSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].weirdSurveyLevelCount.easyCount,
-                SurveyQuizSO.Level.Easy);
-            AddWeirdSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].weirdSurveyLevelCount.normalCount,
-                SurveyQuizSO.Level.Normal);
-            AddWeirdSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].weirdSurveyLevelCount.hardCount,
-                SurveyQuizSO.Level.Hard);
-            AddWeirdSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].weirdSurveyLevelCount.insaneCount,
-                SurveyQuizSO.Level.Insane);
-        }
-
-        private void AddNormalSurvey(int count, SurveyQuizSO.Level level)
         {
-            if (GameManager.Instance == null) return;
-            
-            GameManager gameManager = GameManager.Instance;
-         
-            if (gameManager.SurveyData == null || !gameManager.SurveyData[UnityEngine.Random.Range(0, gameManager.SurveyData.Count)]) return;
-            
-            for (int i = 0; i < count; i++)
+            if (!_hasClearedTuto)
             {
-                SurveyQuizSO data;
-                while (true)
-                {
-                    data = gameManager.SurveyData[UnityEngine.Random.Range(0, gameManager.SurveyData.Count)];
-                    if (data.weirdQuiz) continue;
-                    int index = gameManager.SurveyData.FindIndex(x => x == data);
-                    gameManager.SurveyData.RemoveAt(index);
-                    if (data.level == level)
-                        break;
-                }
-
-                gameManager.TodaySurveys.Add(data);
+                TutorialSurvey();
+                return;
             }
+
+            AddSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].normalSurveyLevelCount.easyCount, SurveyQuizSO.Level.Easy, false);
+            AddSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].normalSurveyLevelCount.normalCount, SurveyQuizSO.Level.Normal, false);
+            AddSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].normalSurveyLevelCount.hardCount, SurveyQuizSO.Level.Hard, false);
+            AddSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].normalSurveyLevelCount.insaneCount, SurveyQuizSO.Level.Insane, false);
+            AddSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].weirdSurveyLevelCount.easyCount, SurveyQuizSO.Level.Easy, true);
+            AddSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].weirdSurveyLevelCount.normalCount, SurveyQuizSO.Level.Normal, true);
+            AddSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].weirdSurveyLevelCount.hardCount, SurveyQuizSO.Level.Hard, true);
+            AddSurvey(GameManager.Instance.ApplySurveyCountPerDay[GameManager.Instance.CurrentDay].weirdSurveyLevelCount.insaneCount, SurveyQuizSO.Level.Insane, true);
         }
 
-        private void AddWeirdSurvey(int count, SurveyQuizSO.Level level)
+        private void TutorialSurvey()
         {
             GameManager gameManager = GameManager.Instance;
             
+            if (GameManager.Instance == null || gameManager.SurveyData == null) return;
+
+            List<SurveyQuizSO> list = gameManager.SurveyData.FindAll(x =>
+                x != null && x.level == SurveyQuizSO.Level.Tutorial && !x.weirdQuiz);
+            
+            for (int i = 0; i < list.Count; i++)
+            {
+                gameManager.TodaySurveys.Add(list[i]);
+                gameManager.SurveyData.Remove(list[i]);
+            }
+
+            _hasClearedTuto = true;
+        }
+        
+        private void AddSurvey(int count, SurveyQuizSO.Level level, bool isWeird)
+        {
+            GameManager gameManager = GameManager.Instance;
+            
+            if (GameManager.Instance == null || gameManager.SurveyData == null) return;
+            
             for (int i = 0; i < count; i++)
             {
-                SurveyQuizSO data;
-                while (true)
+                if (gameManager.SurveyData.Count <= 0)
                 {
-                    data = gameManager.SurveyData[UnityEngine.Random.Range(0, gameManager.SurveyData.Count)];
-                    if (!data.weirdQuiz) continue;
-                    int index = gameManager.SurveyData.FindIndex(x => x == data);
-                    gameManager.SurveyData.RemoveAt(index);
-                    if (data.level == level)
-                        break;
+                    Debug.Log($"현재 남아있는 설문 조사 데이터가 없습니다. 현재 남아있는 설문 조사의 양{gameManager.SurveyData.Count}");
+                    return;
                 }
+                
+                List<SurveyQuizSO> list = gameManager.SurveyData.FindAll(x => x != null && x.level == level && x.weirdQuiz == isWeird);
 
-                gameManager.TodaySurveys.Add(data);
+                var surveyQuiz = list[UnityEngine.Random.Range(0, list.Count)];
+                
+                gameManager.TodaySurveys.Add(surveyQuiz);
+                gameManager.SurveyData.Remove(surveyQuiz);
             }
         }
 
+        public void ResetTodaySurvey()
+        {
+            HasCompletedSurvey = false;
+            
+            _currentSurveyIndex = 0;
+            GameManager.Instance.TodaySurveys.Clear();
+        }
+        
         public void InitSurveyQuiz() // UI를 초기화 해주는 작업
         {
             if (_currentSurveyIndex >= GameManager.Instance.TodaySurveys.Count)
             {
+                HasCompletedSurvey = true;
                 _quizText.SetText("모든 설문을 조사함");
                 _yesBtn.gameObject.SetActive(false);
                 _idkBtn.gameObject.SetActive(false);

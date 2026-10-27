@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using KDH.Scripts.CoreLib;
 using KDH.Scripts.Survey;
 using UnityEngine;
 
 namespace KDH.Scripts.Systems
 {
-    public class GameManager : MonoSingleton<GameManager>
+    public class GameManager : MonoBehaviour
     {
         [Header("Settings")]
         [field: SerializeField] public int MaxDayAmount { get; private set; }
@@ -16,15 +15,14 @@ namespace KDH.Scripts.Systems
         [Header("Data")]
         [field: SerializeField] public List<SurveyQuizSO> TodaySurveys { get; private set; } = new();
         [field: SerializeField] public List<SurveyQuizSO> SurveyData { get; private set; } = new();
-        
-        [Header("Modules")]
-        [field: SerializeField] public Survey.Survey Survey { get; private set; }
-        [field: SerializeField] public Internet.Internet Internet { get; private set; }
 
-        protected override void Awake()
+        [Header("Modules")] 
+        [field: SerializeField] public UIManager UIManager { get; private set; }
+        [field: SerializeField] public Survey.Survey Survey { get; private set; }
+        [field: SerializeField] public Store.Store Store { get; private set; }
+
+        private void Awake()
         {
-            base.Awake();
-            
             Survey.ResetTodaySurvey();
             Survey.InitSurvey();
         }
@@ -33,8 +31,8 @@ namespace KDH.Scripts.Systems
         {
             if (!Survey.HasCompletedSurvey)
             {
-                UIManager.Instance.PopupUI.Target.gameObject.SetActive(true);
-                UIManager.Instance.PopupUI.SetUI("자기 전 모든 설문조사에 응시해야 합니다.");
+                UIManager.PopupUI.Target.gameObject.SetActive(true);
+                UIManager.PopupUI.SetUI("자기 전 모든 설문조사에 응시해야 합니다.");
                 return;
             }
 
@@ -45,7 +43,7 @@ namespace KDH.Scripts.Systems
             Survey.ResetTodaySurvey();
             Survey.InitSurvey();
             Survey.InitSurveyQuiz();
-            UIManager.Instance.FadeInOutUI.Fade(1f, 1f, 1f);
+            UIManager.NextDayFadeInOutUI.Fade(1f, 1f, 1.25f, $"{CurrentDay}일차");
         }
     }
 }

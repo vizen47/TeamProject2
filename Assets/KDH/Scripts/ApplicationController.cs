@@ -1,10 +1,9 @@
-using KDH.Scripts.CoreLib;
 using KDH.Scripts.Systems;
 using UnityEngine;
 
 namespace KDH.Scripts
 {
-    public class ApplicationController : MonoSingleton<ApplicationController>
+    public class ApplicationController : MonoBehaviour
     {
         [SerializeField] private GameObject[] childGO;
         private IApplicable[] _applicable = new IApplicable[2];

@@ -3,12 +3,13 @@ using KDH.Scripts.Systems;
 using KDH.Scripts.UI;
 using UnityEngine;
 
-namespace KDH.Scripts.Internet
+namespace KDH.Scripts.Store
 {
-    public class Internet : MonoBehaviour, IApplicable
+    public class Store : MonoBehaviour, IApplicable
     {
         [field: SerializeField] public GameObject TargetApplication { get; set; }
         [field: SerializeField] public GameObject WorkApp { get; set; }
+        [SerializeField] private ApplicationController _applicationController;
         [SerializeField] private PopUpUIMotion popUIMotionUIMotion;
         public GameObject GameObject => gameObject;
         public event Action OnChangeActive;
@@ -29,7 +30,7 @@ namespace KDH.Scripts.Internet
         public void HandleChangeActive()
         {
             OnChangeActive?.Invoke();
-            ApplicationController.Instance.Init(this);
+            _applicationController.Init(this);
         }
         
         public void SetUnEnableWorkApp(bool isActive)

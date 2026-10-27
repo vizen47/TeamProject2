@@ -1,9 +1,8 @@
-using System;
-using KDH.Scripts.CoreLib;
+using UnityEngine;
 
 namespace KDH.Scripts
 {
-    public class ResourceManager : MonoSingleton<ResourceManager>
+    public class ResourceManager : MonoBehaviour
     {
         private int _credit;
 

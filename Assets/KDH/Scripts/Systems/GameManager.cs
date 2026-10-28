@@ -18,18 +18,18 @@ namespace KDH.Scripts.Systems
 
         [Header("Modules")] 
         [field: SerializeField] public UIManager UIManager { get; private set; }
-        [field: SerializeField] public Survey.Survey Survey { get; private set; }
-        [field: SerializeField] public Store.Store Store { get; private set; }
+        [field: SerializeField] public Survey.Survey SurveyUI { get; private set; }
+        [field: SerializeField] public Store.StoreUI StoreUI { get; private set; }
 
         private void Awake()
         {
-            Survey.ResetTodaySurvey();
-            Survey.InitSurvey();
+            SurveyUI.ResetTodaySurvey();
+            SurveyUI.InitSurvey();
         }
         
         public void ContinueNextDay()
         {
-            if (!Survey.HasCompletedSurvey)
+            if (!SurveyUI.HasCompletedSurvey)
             {
                 UIManager.PopupUI.Target.gameObject.SetActive(true);
                 UIManager.PopupUI.SetUI("자기 전 모든 설문조사에 응시해야 합니다.");
@@ -40,9 +40,9 @@ namespace KDH.Scripts.Systems
 #if UNITY_EDITOR
             Debug.Log($"현재 {CurrentDay}일차");
 #endif
-            Survey.ResetTodaySurvey();
-            Survey.InitSurvey();
-            Survey.InitSurveyQuiz();
+            SurveyUI.ResetTodaySurvey();
+            SurveyUI.InitSurvey();
+            SurveyUI.InitSurveyQuiz();
             UIManager.NextDayFadeInOutUI.Fade(1f, 1f, 1.25f, $"{CurrentDay}일차");
         }
     }

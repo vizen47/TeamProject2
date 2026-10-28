@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KDH.Scripts
@@ -14,6 +15,13 @@ namespace KDH.Scripts
                 if (value > 0)
                     _credit = value;
             }
+        }
+
+        private readonly Dictionary<ItemSO, int> _itemDict = new();
+
+        public void GetItem(ItemSO item, int count)
+        {
+            _itemDict.TryAdd(item, count);
         }
     }
 }

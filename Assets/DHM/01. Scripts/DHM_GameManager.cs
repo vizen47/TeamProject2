@@ -1,9 +1,9 @@
 using UnityEngine;
-using TMPro; // 1. TextMeshPro를 사용하기 위해 반드시 추가해야 합니다!
+using TMPro;
 
-public class GameManager : MonoBehaviour
+public class DHM_GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static DHM_GameManager Instance;
 
     [Header("생존자 정보")]
     public SurvivorStats player = new SurvivorStats { characterName = "백우빈", hungerDecreasePerDay = 2.5f, thirstDecreasePerDay = 1.5f };

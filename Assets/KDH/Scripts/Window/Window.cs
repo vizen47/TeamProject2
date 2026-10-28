@@ -9,17 +9,17 @@ namespace KDH.Scripts.Window
         private GameObject _targetUI;
         public event Action OnChangeActive;
 
-        private SlideUpUI _slideUpUI;
+        private SlideUpUIMotion _slideUpUIMotion;
         
         void Awake()
         {
-            _slideUpUI = GetComponentInChildren<SlideUpUI>();
+            _slideUpUIMotion = GetComponentInChildren<SlideUpUIMotion>();
             _targetUI = gameObject;
         }
 
         void Start()
         {
-            OnChangeActive += _slideUpUI.ActiveAnimation;
+            OnChangeActive += _slideUpUIMotion.ActiveAnimation;
             
             _targetUI.SetActive(true); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
             OnChangeActive?.Invoke(); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
@@ -27,7 +27,7 @@ namespace KDH.Scripts.Window
         
         void OnDestroy()
         {
-            OnChangeActive -= _slideUpUI.ActiveAnimation;    
+            OnChangeActive -= _slideUpUIMotion.ActiveAnimation;    
         }
 
         public void HandleChangeActive()

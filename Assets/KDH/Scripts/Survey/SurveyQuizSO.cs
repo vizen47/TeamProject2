@@ -23,6 +23,7 @@ namespace KDH.Scripts.Survey
 
         public enum Level
         {
+            Tutorial,
             Easy,
             Normal,
             Hard,

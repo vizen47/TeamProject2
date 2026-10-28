@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace KDH.Scripts.UI
 {
-    public class SlideUpUI : MonoBehaviour
+    public class PopUpUIMotion : MonoBehaviour
     {
         [SerializeField] private GameObject target;
-        [SerializeField] private Vector3 minPos;
-        [SerializeField] private Vector3 maxPos;
+        [SerializeField] private Vector3 minSize;
+        [SerializeField] private Vector3 maxSize;
         [SerializeField] [Range(0.2f, 3f)] private float duration;
 
         private void SetActive()
@@ -19,15 +19,14 @@ namespace KDH.Scripts.UI
         {
             if (!target.activeSelf)
             {
-                target.transform.position = new Vector3(target.transform.position.x, minPos.y, target.transform.position.z);
                 SetActive();
-                target.transform.DOMoveY(maxPos.y, duration).SetEase(Ease.Linear);
+                target.transform.DOScale(maxSize, duration).SetEase(Ease.Linear);
             }
             else
             {
                 Sequence seq = DOTween.Sequence();
 
-                seq.Append(target.transform.DOMoveY(minPos.y, 0).SetEase(Ease.Linear));
+                seq.Append(target.transform.DOScale(minSize, 0).SetEase(Ease.Linear));
                 seq.AppendCallback(SetActive);
             }
         }

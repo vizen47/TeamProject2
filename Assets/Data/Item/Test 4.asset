@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da644b7275bb00f4b9e3807f4180b57c, type: 3}
+  m_Name: Test 4
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  itemName: "\uD14C\uC2A4\uD2B8 4"
+  icon: {fileID: 4052119502237530678, guid: faf303056310a264f9efc40af3e14583, type: 3}
+  description: "\uD14C\uC2A4\uD2B8 4\uC785\uB2C8\uB2E4."
+  cost: 40
+  recoveryType: 0
+  hungerAmount: 2
+  thirstAmount: 0

@@ -9,5 +9,6 @@ namespace KDH.Scripts.Systems
         [field: SerializeField] public Popup PopupUI { get; private set; }
         [field: SerializeField] public FadeInOutUI FadeInOutUI { get; private set; }
         [field: SerializeField] public NextDayFadeInOutUI NextDayFadeInOutUI { get; private set; }
+        [field: SerializeField] public UpdateCreditText CreditText { get; private set; }
     }
 }

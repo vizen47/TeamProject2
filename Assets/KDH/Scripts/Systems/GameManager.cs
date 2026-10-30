@@ -20,13 +20,14 @@ namespace KDH.Scripts.Systems
         [field: SerializeField] public UIManager UIManager { get; private set; }
         [field: SerializeField] public Survey.Survey SurveyUI { get; private set; }
         [field: SerializeField] public Store.StoreUI StoreUI { get; private set; }
+        [field: SerializeField] public Store.Store Store { get; private set; }
 
         private void Awake()
         {
             SurveyUI.ResetTodaySurvey();
             SurveyUI.InitSurvey();
         }
-        
+
         public void ContinueNextDay()
         {
             if (!SurveyUI.HasCompletedSurvey)
@@ -43,6 +44,7 @@ namespace KDH.Scripts.Systems
             SurveyUI.ResetTodaySurvey();
             SurveyUI.InitSurvey();
             SurveyUI.InitSurveyQuiz();
+            Store.ResetItems();
             UIManager.NextDayFadeInOutUI.Fade(1f, 1f, 1.25f, $"{CurrentDay}일차");
         }
     }

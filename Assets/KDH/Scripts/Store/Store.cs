@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using KDH.Scripts.Item;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace KDH.Scripts.Store
 {
@@ -18,7 +19,7 @@ namespace KDH.Scripts.Store
             AddSet();
             ResetItems();
         }
-
+        
         private void AddSet()
         {
             ItemDataSet = new HashSet<ItemSO>(_data);

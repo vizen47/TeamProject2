@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using KDH.Scripts.Systems;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace KDH.Scripts
 {
@@ -32,6 +33,17 @@ namespace KDH.Scripts
             OnCreditChange?.Invoke(Credit);
         }
 
+        private void Update()
+        {
+# if UNITY_EDITOR
+            if (Keyboard.current.tKey.wasPressedThisFrame)
+            {
+                foreach (var i in _itemDict)
+                    Debug.Log(i.Key.itemName + ": " + i.Value);
+            }
+# endif
+        }
+        
         private void OnDestroy()
         {
             OnCreditChange -= _uiManager.CreditText.SetCreditText;
@@ -50,6 +62,12 @@ namespace KDH.Scripts
         public void UseCredit(int amount)
         {
             // 내가 살 수 있는지 검사 해야 함.
+            if (Credit < amount)
+            {
+                _uiManager.PopupUI.SetUI("크레딧이 부족합니다.");
+                return;
+            }
+            
             Credit -= amount;
         }
     }

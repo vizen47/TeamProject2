@@ -16,6 +16,9 @@ namespace KDH.Scripts.UI
         
         public void SetUI(string message)
         {
+            if (!Target.gameObject.activeSelf)
+                Target.gameObject.SetActive(true);
+            
             _text.SetText(message);
         }
     }

@@ -32,7 +32,6 @@ namespace KDH.Scripts.Systems
         {
             if (!SurveyUI.HasCompletedSurvey)
             {
-                UIManager.PopupUI.Target.gameObject.SetActive(true);
                 UIManager.PopupUI.SetUI("자기 전 모든 설문조사에 응시해야 합니다.");
                 return;
             }

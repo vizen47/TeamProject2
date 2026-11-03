@@ -1,10 +1,15 @@
-using UnityEngine.Events;
+using UnityEngine;
 
 namespace KDH.Scripts.CoreLib
 {
-    public abstract class AbstractFeedback
+    public abstract class AbstractFeedback : MonoBehaviour
     {
         public abstract void CreateFeedback();
-        public abstract void DestroyFeedback();
+        public abstract void FinishFeedback();
+
+        private void OnDisable()
+        {
+            FinishFeedback();
+        }
     }
 }

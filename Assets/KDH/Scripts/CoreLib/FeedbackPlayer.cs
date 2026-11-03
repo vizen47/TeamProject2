@@ -1,15 +1,26 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace KDH.Scripts.CoreLib
 {
     public class FeedbackPlayer : MonoBehaviour
     {
-        [SerializeField] private UnityEvent _feedback;
+        private List<AbstractFeedback> _feedbacks = new();
 
-        void PlayFeedback()
+        void Awake()
         {
-            // ForEach()
+            _feedbacks = GetComponents<AbstractFeedback>().ToList();
+        }
+        
+        public void PlayAllFeedback()
+        {
+            _feedbacks.ForEach(feedback => feedback.CreateFeedback());
+        }
+
+        public void StopAllFeedback()
+        {
+            _feedbacks.ForEach(feedback => feedback.FinishFeedback());
         }
     }
 }

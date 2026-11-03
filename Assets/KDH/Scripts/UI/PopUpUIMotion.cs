@@ -16,7 +16,7 @@ namespace KDH.Scripts.UI
         }
 
         public void ActiveAnimation()
-        {
+        {   
             if (!target.activeSelf)
             {
                 SetActive();

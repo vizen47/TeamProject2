@@ -1,72 +1,34 @@
-using System;
 using System.Collections.Generic;
 using KDH.Scripts.Systems;
-using KDH.Scripts.UI;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace KDH.Scripts.Survey
 {
-    public class Survey : MonoBehaviour, IApplicable
+    public class Survey : MonoBehaviour
     {
-        [field: SerializeField] public GameObject TargetApplication { get; set; }
-        [field: SerializeField] public GameObject WorkApp { get; set; }
-        [SerializeField] private Button _yesBtn, _idkBtn, _noBtn;
-        [SerializeField] private TextMeshProUGUI _quizText;
-        [SerializeField ] private PopUpUIMotion popUIMotionUIMotion;
-        [SerializeField] private ApplicationController _applicationController;
-        [SerializeField] private GameManager _gameManager;
+        [field: SerializeField] public SurveyUI SurveyUI { get; private set; }
+        [SerializeField] private GameManager _gameManager; 
+        
         private int _currentSurveyIndex;
         public bool HasCompletedSurvey { get; private set; }
-        public GameObject GameObject => gameObject;
-        
-        public event Action OnChangeActive;
 
         private bool _hasClearedTuto;
-        
-        void Awake()
-        {
-            popUIMotionUIMotion = GetComponentInChildren<PopUpUIMotion>();
-        }
-
         void Start()
         {
-            OnChangeActive += popUIMotionUIMotion.ActiveAnimation;
+            SurveyUI.YesBtn.onClick.AddListener(InitSurveyQuiz);
+            SurveyUI.IdkBtn.onClick.AddListener(InitSurveyQuiz);
+            SurveyUI.NoBtn.onClick.AddListener(InitSurveyQuiz);
             
-            TargetApplication.SetActive(true); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
-            OnChangeActive?.Invoke(); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
-            
-            _yesBtn.onClick.AddListener(InitSurveyQuiz);
-            _idkBtn.onClick.AddListener(InitSurveyQuiz);
-            _noBtn.onClick.AddListener(InitSurveyQuiz);
             InitSurveyQuiz();
         }
 
-        void OnDestroy()
-        {
-            OnChangeActive -= popUIMotionUIMotion.ActiveAnimation;
-            
-            _yesBtn.onClick.RemoveAllListeners();
-            _idkBtn.onClick.RemoveAllListeners();
-            _noBtn.onClick.RemoveAllListeners();
+        private void OnDestroy()
+        {   
+            SurveyUI.YesBtn.onClick.RemoveAllListeners();
+            SurveyUI.IdkBtn.onClick.RemoveAllListeners();
+            SurveyUI.NoBtn.onClick.RemoveAllListeners();
         }
         
-        #region UI
-
-        public void HandleChangeActive()
-        {
-            OnChangeActive?.Invoke();
-            _applicationController.Init(this);
-        }
-        
-        public void SetUnEnableWorkApp(bool isActive)
-        {
-            WorkApp.SetActive(isActive);
-        }
-
-        #endregion
-
         public void InitSurvey()
         {
             if (!_hasClearedTuto)
@@ -115,7 +77,7 @@ namespace KDH.Scripts.Survey
                 
                 List<SurveyQuizSO> list = _gameManager.SurveyData.FindAll(x => x != null && x.level == level && x.weirdQuiz == isWeird);
 
-                var surveyQuiz = list[UnityEngine.Random.Range(0, list.Count)];
+                var surveyQuiz = list[Random.Range(0, list.Count)];
                 
                 _gameManager.TodaySurveys.Add(surveyQuiz);
                 _gameManager.SurveyData.Remove(surveyQuiz);
@@ -135,30 +97,30 @@ namespace KDH.Scripts.Survey
             if (_currentSurveyIndex >= _gameManager.TodaySurveys.Count)
             {
                 HasCompletedSurvey = true;
-                _quizText.SetText("모든 설문을 조사함");
-                _yesBtn.gameObject.SetActive(false);
-                _idkBtn.gameObject.SetActive(false);
-                _noBtn.gameObject.SetActive(false);
+                SurveyUI.QuizText.SetText("모든 설문을 조사함");
+                SurveyUI.YesBtn.gameObject.SetActive(false);
+                SurveyUI.IdkBtn.gameObject.SetActive(false);
+                SurveyUI.NoBtn.gameObject.SetActive(false);
                 return;
             }
             
-            if (!_yesBtn.gameObject.activeSelf)
-                _yesBtn.gameObject.SetActive(true);
-            if (!_noBtn.gameObject.activeSelf)
-                _noBtn.gameObject.SetActive(true);
+            if (!SurveyUI.YesBtn.gameObject.activeSelf)
+                SurveyUI.YesBtn.gameObject.SetActive(true);
+            if (!SurveyUI.NoBtn.gameObject.activeSelf)
+                SurveyUI.NoBtn.gameObject.SetActive(true);
             
             _gameManager.CurrentSurvey = _gameManager.TodaySurveys[_currentSurveyIndex];
             SurveyQuizSO surveyData = _gameManager.CurrentSurvey;
 
-            _quizText.SetText(surveyData.mainQuizText);
+            SurveyUI.QuizText.SetText(surveyData.mainQuizText);
             
             if (surveyData.weirdQuiz)
             {
-                _idkBtn.gameObject.SetActive(false);
+                SurveyUI.IdkBtn.gameObject.SetActive(false);
             }
             else
             {
-                _idkBtn.gameObject.SetActive(true);
+                SurveyUI.IdkBtn.gameObject.SetActive(true);
             }
 
             _currentSurveyIndex++;

@@ -7,14 +7,15 @@ public enum RecoveryType
     Both
 }
 
-[CreateAssetMenu(fileName = "ItemSO", menuName = "ScriptableObject/ItemSO")]
+[CreateAssetMenu(fileName = "ItemData", menuName = "SO/DHM/ItemData")]
 public class ItemSO : ScriptableObject
 {
     [Header("기본 정보")]
     public string itemName;
     public Sprite icon;
     [TextArea] public string description;
-
+    public int cost;
+    
     [Header("회복 설정")]
     public RecoveryType recoveryType;
     public float hungerAmount;

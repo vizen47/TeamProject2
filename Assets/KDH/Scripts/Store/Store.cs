@@ -1,41 +1,56 @@
-using System;
-using KDH.Scripts.Systems;
-using KDH.Scripts.UI;
+using System.Collections.Generic;
+using KDH.Scripts.Item;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace KDH.Scripts.Store
 {
-    public class Store : MonoBehaviour, IApplicable
+    public class Store : MonoBehaviour
     {
-        [field: SerializeField] public GameObject TargetApplication { get; set; }
-        [field: SerializeField] public GameObject WorkApp { get; set; }
-        [SerializeField] private ApplicationController _applicationController;
-        [SerializeField] private PopUpUIMotion popUIMotionUIMotion;
-        public GameObject GameObject => gameObject;
-        public event Action OnChangeActive;
-      
-        void Start()
-        {
-            OnChangeActive += popUIMotionUIMotion.ActiveAnimation;      
-            
-            TargetApplication.SetActive(true); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
-            OnChangeActive?.Invoke(); // <= 이부분 초기화 시작하면 자동으로 끄고 시작할려고 추가한 부분
-        }
+        [Header("데이터")]
+        [SerializeField] private List<ItemSO> _data;
+        public HashSet<ItemSO> ItemDataSet { get; private set; }
 
-        void OnDestroy()
-        {
-            OnChangeActive -= popUIMotionUIMotion.ActiveAnimation;    
-        }
+        [SerializeField] private ItemSOHandler[] _itemSoHandlers;
+        private List<ItemSO> _currentList;
 
-        public void HandleChangeActive()
+        private void Awake()
         {
-            OnChangeActive?.Invoke();
-            _applicationController.Init(this);
+            AddSet();
+            ResetItems();
         }
         
-        public void SetUnEnableWorkApp(bool isActive)
+        private void AddSet()
         {
-            WorkApp.SetActive(isActive);
+            ItemDataSet = new HashSet<ItemSO>(_data);
+        }
+        
+        public void ResetItems()
+        {
+            _currentList = new List<ItemSO>(ItemDataSet);
+
+            List<ItemSO> item = new();
+
+            for (int i = 0; i < _currentList.Count; i++)
+            {
+                int a = Random.Range(0, _currentList.Count);
+
+                if (item.Contains(_currentList[a]))
+                {
+                    i--;
+                    continue;
+                }
+
+                item.Add(_currentList[a]);
+            }
+
+            int j = 0;
+            
+            foreach (var itemHandler in _itemSoHandlers)
+            {
+                itemHandler.SetItemData(item[j]);
+                j++;
+            }
         }
     }
 }

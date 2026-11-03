@@ -7,7 +7,7 @@ namespace KDH.Scripts
     {
         [SerializeField] private GameObject[] childGO;
         private IApplicable[] _applicable = new IApplicable[2];
-        private IApplicable _currentApplication;
+        public IApplicable CurrentApplication { get; private set; }
 
         void Awake()
         {
@@ -19,14 +19,14 @@ namespace KDH.Scripts
         
         public void Init(IApplicable applicable)
         {
-            _currentApplication = applicable;
+            CurrentApplication = applicable;
             ChangeChild();
         }
 
         
         public void ChangeChild()
         {
-            _currentApplication.TargetApplication.transform.SetAsLastSibling();
+            CurrentApplication.TargetApplication.transform.SetAsLastSibling();
         }
 
         public void DisableApplications()

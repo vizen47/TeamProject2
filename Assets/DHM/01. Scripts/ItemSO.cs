@@ -20,25 +20,30 @@ public class ItemSO : ScriptableObject
     public float hungerAmount;
     public float thirstAmount;
 
-    // 아이템 사용 로직 예시
-    public void Use()
+    public void Use(CharacterStats target)
     {
+        if (target == null)
+        {
+            Debug.LogWarning("회복시킬 대상이 지정되지 않음.");
+            return;
+        }
+
         switch (recoveryType)
         {
             case RecoveryType.Hunger:
-                //PlayerStats.Instance.RestoreHunger(hungerAmount);
-                Debug.Log($"{itemName} 사용 -> 허기 {hungerAmount} 회복");
+                target.RestoreHunger(hungerAmount);
+                Debug.Log($"{itemName} 사용 -> {target.characterName}의 허기 {hungerAmount} 회복 (현재: {target.currentHunger})");
                 break;
 
             case RecoveryType.Thirst:
-                //PlayerStats.Instance.RestoreThirst(thirstAmount);
-                Debug.Log($"{itemName} 사용 -> 갈증 {thirstAmount} 회복");
+                target.RestoreThirst(thirstAmount);
+                Debug.Log($"{itemName} 사용 -> {target.characterName}의 갈증 {thirstAmount} 회복 (현재: {target.currentThirst})");
                 break;
 
             case RecoveryType.Both:
-                //PlayerStats.Instance.RestoreHunger(hungerAmount);
-                //PlayerStats.Instance.RestoreThirst(thirstAmount);
-                Debug.Log($"{itemName} 사용 -> 허기 {hungerAmount}, 갈증 {thirstAmount} 회복");
+                target.RestoreHunger(hungerAmount);
+                target.RestoreThirst(thirstAmount);
+                Debug.Log($"{itemName} 사용 -> {target.characterName}의 허기 {hungerAmount}, 갈증 {thirstAmount} 회복");
                 break;
         }
     }

@@ -1,5 +1,3 @@
-using System;
-
 namespace KDH.Scripts.CoreLib
 {
     public class NotifyValue<T>

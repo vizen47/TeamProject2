@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using KDH.Scripts.Item;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace KDH.Scripts.Store
 {

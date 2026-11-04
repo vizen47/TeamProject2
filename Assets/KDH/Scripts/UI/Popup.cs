@@ -1,4 +1,3 @@
-using KDH.Scripts.Systems;
 using TMPro;
 using UnityEngine;
 namespace KDH.Scripts.UI

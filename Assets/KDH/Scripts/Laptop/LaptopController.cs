@@ -23,7 +23,7 @@ namespace KDH.Scripts.Laptop
             Application.wantsToQuit -= ControlAlfF4;
         }
 
-        private bool ControlAlfF4()
+        private bool ControlAlfF4() // 프로젝트를 종료할 때 Alt + F4를 막는 기능
         {
             Debug.Log("Alt F4 막기");
             return false;

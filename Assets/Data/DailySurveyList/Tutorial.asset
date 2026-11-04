@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ede65f299aea5b4aae255814e0fc5ac, type: 3}
+  m_Name: Tutorial
+  m_EditorClassIdentifier: Assembly-CSharp::DailySurveyListSO
+  list:
+  - {fileID: 11400000, guid: 78e644753ce372f4cb157a47d708a18c, type: 2}
+  - {fileID: 11400000, guid: 0574fa9184766b044b71708ddae7c1ed, type: 2}
+  - {fileID: 11400000, guid: 05ba81199fc3630488fbc260c30c107b, type: 2}
+  - {fileID: 11400000, guid: cb5c1bf13adc03d449dcb5a8b67aa4d1, type: 2}
+  - {fileID: 11400000, guid: ba8dbdfb303516a47bb4b68fea045ce5, type: 2}
+  - {fileID: 11400000, guid: 9cd8dc27c5dc6c3418ef12699901b55b, type: 2}
+  - {fileID: 11400000, guid: f32ebe149bc0b094c8a60b2183a9d3ca, type: 2}
+  - {fileID: 11400000, guid: 3c92915b09c7c4b4880222b660a01b1b, type: 2}

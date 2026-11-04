@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test 4
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: "\uD14C\uC2A4\uD2B8 4"
-  icon: {fileID: 4052119502237530678, guid: faf303056310a264f9efc40af3e14583, type: 3}
+  icon: {fileID: -5297608204708827253, guid: d6618290c624b874da202552a62d94d6, type: 3}
   description: "\uD14C\uC2A4\uD2B8 4\uC785\uB2C8\uB2E4."
   cost: 40
   recoveryType: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace KDH.Scripts.Survey
 {
-    [CreateAssetMenu(fileName = "SurveyQuizData", menuName = "SO/KDH/SurveyQuizData",order = 0)]
+    [CreateAssetMenu(fileName = "SurveyQuizData", menuName = "SO/KDH/SurveyQuizData", order = 0)]
     public class SurveyQuizSO : ScriptableObject
     {
         #region  DataFrom
@@ -19,15 +19,6 @@ namespace KDH.Scripts.Survey
         {
             Yes,
             No
-        }
-
-        public enum Level
-        {
-            Tutorial,
-            Easy,
-            Normal,
-            Hard,
-            Insane
         }
 
         [Serializable]
@@ -46,7 +37,6 @@ namespace KDH.Scripts.Survey
 
         #endregion
         
-        public Level level;
         [Header("설정")][TextArea]
         public string mainQuizText;
         

@@ -1688,7 +1688,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 720, y: -30}
+  m_AnchoredPosition: {x: 757.5, y: -30}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &218505425
@@ -3471,6 +3471,7 @@ GameObject:
   - component: {fileID: 511614163}
   - component: {fileID: 511614162}
   - component: {fileID: 511614161}
+  - component: {fileID: 511614164}
   m_Layer: 6
   m_Name: StoreBtn
   m_TagString: Untagged
@@ -3541,19 +3542,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 511614162}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 87074291}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &511614162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3592,6 +3581,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511614159}
   m_CullTransparentMesh: 1
+--- !u!114 &511614164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511614159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801832ff893710a409685fb0072cff49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.UI.ApplicationBtn
+  _button: {fileID: 511614161}
+  _applicationUI: {fileID: 1670834358}
 --- !u!1 &553005112
 GameObject:
   m_ObjectHideFlags: 0
@@ -4392,7 +4395,6 @@ MonoBehaviour:
   <NoBtn>k__BackingField: {fileID: 1512176169}
   <QuizText>k__BackingField: {fileID: 368606131}
   _activeButton:
-  - {fileID: 1060101068}
   - {fileID: 218505425}
   - {fileID: 1684500733}
 --- !u!1 &686404171
@@ -6266,6 +6268,7 @@ GameObject:
   - component: {fileID: 1060101070}
   - component: {fileID: 1060101069}
   - component: {fileID: 1060101068}
+  - component: {fileID: 1060101071}
   m_Layer: 6
   m_Name: SurveyBtn
   m_TagString: Untagged
@@ -6336,19 +6339,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1060101069}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 218505423}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1060101069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6387,6 +6378,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060101066}
   m_CullTransparentMesh: 1
+--- !u!114 &1060101071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060101066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801832ff893710a409685fb0072cff49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.UI.ApplicationBtn
+  _button: {fileID: 1060101068}
+  _applicationUI: {fileID: 631306514}
 --- !u!1 &1078834496
 GameObject:
   m_ObjectHideFlags: 0
@@ -7049,8 +7054,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 954286658}
   m_HandleRect: {fileID: 954286657}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.6
+  m_Value: -0.0000018310546
+  m_Size: 0.59999794
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7189,76 +7194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb7b334c9763ab4e875f8207a608c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Systems.GameManager
-  <MaxDayAmount>k__BackingField: 15
-  <ApplySurveyCountPerDay>k__BackingField:
-  - normalSurveyLevelCount:
-      tutorialCount: 8
-      easyCount: 0
-      normalCount: 0
-      hardCount: 0
-      insaneCount: 0
-    weirdSurveyLevelCount:
-      tutorialCount: 0
-      easyCount: 0
-      normalCount: 0
-      hardCount: 0
-      insaneCount: 0
-  - normalSurveyLevelCount:
-      tutorialCount: 0
-      easyCount: 2
-      normalCount: 0
-      hardCount: 0
-      insaneCount: 0
-    weirdSurveyLevelCount:
-      tutorialCount: 0
-      easyCount: 1
-      normalCount: 0
-      hardCount: 0
-      insaneCount: 0
-  - normalSurveyLevelCount:
-      tutorialCount: 0
-      easyCount: 2
-      normalCount: 0
-      hardCount: 0
-      insaneCount: 0
-    weirdSurveyLevelCount:
-      tutorialCount: 0
-      easyCount: 1
-      normalCount: 0
-      hardCount: 0
-      insaneCount: 0
-  - normalSurveyLevelCount:
-      tutorialCount: 0
-      easyCount: 2
-      normalCount: 0
-      hardCount: 0
-      insaneCount: 0
-    weirdSurveyLevelCount:
-      tutorialCount: 0
-      easyCount: 1
-      normalCount: 0
-      hardCount: 0
-      insaneCount: 0
-  <TodaySurveys>k__BackingField: []
-  <SurveyData>k__BackingField:
-  - {fileID: 11400000, guid: 78e644753ce372f4cb157a47d708a18c, type: 2}
-  - {fileID: 11400000, guid: 0574fa9184766b044b71708ddae7c1ed, type: 2}
-  - {fileID: 11400000, guid: 05ba81199fc3630488fbc260c30c107b, type: 2}
-  - {fileID: 11400000, guid: cb5c1bf13adc03d449dcb5a8b67aa4d1, type: 2}
-  - {fileID: 11400000, guid: ba8dbdfb303516a47bb4b68fea045ce5, type: 2}
-  - {fileID: 11400000, guid: 9cd8dc27c5dc6c3418ef12699901b55b, type: 2}
-  - {fileID: 11400000, guid: f32ebe149bc0b094c8a60b2183a9d3ca, type: 2}
-  - {fileID: 11400000, guid: 3c92915b09c7c4b4880222b660a01b1b, type: 2}
-  - {fileID: 11400000, guid: 4c255dc27bfc584449e739a0506c1875, type: 2}
-  - {fileID: 11400000, guid: 33e082b4e4d73c743b9ace51e2670cfd, type: 2}
-  - {fileID: 11400000, guid: 1e74fa12b395f974baf3f00f1a6b5724, type: 2}
-  - {fileID: 11400000, guid: a709ba4f99d297d45b3fbd1ec04d8d8b, type: 2}
-  - {fileID: 11400000, guid: cab6946328c932e4784fd1484b775458, type: 2}
-  - {fileID: 11400000, guid: 141025f8d7d46b345a8098d187e683b6, type: 2}
-  - {fileID: 11400000, guid: 6cd5c1aac99f94d4eb2974bd159beb13, type: 2}
-  - {fileID: 11400000, guid: daa343eb130a7f440ac90b1076c1efe0, type: 2}
-  - {fileID: 11400000, guid: 4ad0ac44e15dc5249b9d0b5916f41733, type: 2}
-  - {fileID: 11400000, guid: ee7a078b6c0a88d4d933928c3e701ced, type: 2}
+  <DailySurveyList>k__BackingField:
+  - {fileID: 11400000, guid: 759b6275045259d47935a15138587965, type: 2}
+  - {fileID: 11400000, guid: 59f77e69fba1bcc4d85fbb9f1a988eeb, type: 2}
+  - {fileID: 11400000, guid: 416d80040c29e0549948f7889bcf1482, type: 2}
+  - {fileID: 11400000, guid: c4733b6cb250e174697506db680ace3e, type: 2}
   <UIManager>k__BackingField: {fileID: 371219323}
   <SurveyUI>k__BackingField: {fileID: 1014013675}
   <StoreUI>k__BackingField: {fileID: 1670834359}
@@ -9474,7 +9414,6 @@ MonoBehaviour:
   _applicationController: {fileID: 486239141}
   popUIMotionUIMotion: {fileID: 1365131127}
   _activeButton:
-  - {fileID: 511614161}
   - {fileID: 87074293}
   - {fileID: 1337181151}
 --- !u!1 &1684500731
@@ -10688,7 +10627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 400.00006}
+  m_AnchoredPosition: {x: 0, y: 400.0008}
   m_SizeDelta: {x: 0, y: 1000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1948008762

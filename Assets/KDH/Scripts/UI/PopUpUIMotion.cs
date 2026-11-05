@@ -30,5 +30,27 @@ namespace KDH.Scripts.UI
                 seq.AppendCallback(SetActive);
             }
         }
+
+        public void ActiveTrueAnimation()
+        {
+            SetActive();
+            target.transform.DOScale(maxSize, duration).SetEase(Ease.Linear);
+        }
+
+        public void ActiveFalseAnimation()
+        {
+            Sequence seq = DOTween.Sequence();
+
+            seq.Append(target.transform.DOScale(minSize, 0).SetEase(Ease.Linear));
+            seq.AppendCallback(SetActive);
+        }
+
+        public void NormalizeAnimation()
+        {
+            Sequence seq = DOTween.Sequence();
+
+            seq.Append(target.transform.DOScale(minSize, duration).SetEase(Ease.Linear));
+            seq.AppendCallback(SetActive);
+        }
     }
 }

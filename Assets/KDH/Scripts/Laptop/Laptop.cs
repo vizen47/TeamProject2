@@ -39,7 +39,7 @@ namespace KDH.Scripts.Laptop
             }
         }
 
-        public void HandleChangeActive()
+        public void HandleChangeActive() // 버튼과 직렬화로 연결 됌
         {
             OnChangeActive?.Invoke();
         }

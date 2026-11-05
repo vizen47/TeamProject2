@@ -8,6 +8,7 @@ namespace KDH.Scripts.UI
     {
         [SerializeField] private Button _button;
         [SerializeField] private Transform _applicationUI;
+        [SerializeField] private PopUpUIMotion popUIMotionUIMotion;
 
         private IApplicable _target;
 
@@ -28,14 +29,10 @@ namespace KDH.Scripts.UI
 
         private void Update()
         {
-            if (_target.WorkApp.activeSelf == true) // 이미 켜져있으면 스킵
-            {
-                return;
-            }
-
             if (_isClicked) // 첫 클릭이 감지 되었을 때
             {
                 _timer += Time.deltaTime;
+
                 if (_timer >= 0.5f) // 0.5초가 지나면 클릭 초기화
                 {
                     _isClicked = false;
@@ -46,7 +43,7 @@ namespace KDH.Scripts.UI
 
         private void HandleClick()
         {
-            if (_target.WorkApp.activeSelf == true) // 이미 켜져있으면 스킵
+            if (_target.WorkApp.activeSelf == true && _target.TargetApplication.activeSelf == true) // 이미 켜져있으면 스킵
             {
                 return;
             }
@@ -54,7 +51,8 @@ namespace KDH.Scripts.UI
             if (_isClicked && _timer < 0.5f)
             {
                 _target.SetUnEnableWorkApp(true);
-                _target.HandleChangeActive();
+                _target.WorkApp.SetActive(true);
+                popUIMotionUIMotion.ActiveTrueAnimation();
             }
             
             _isClicked = true; // 첫 클릭 감지

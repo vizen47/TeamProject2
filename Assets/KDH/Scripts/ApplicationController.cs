@@ -34,6 +34,7 @@ namespace KDH.Scripts
             foreach (var entity in Applicable)
             {
                 entity.TargetApplication.SetActive(false);
+                entity.TargetApplication.transform.localScale = Vector3.zero;
                 entity.WorkApp.SetActive(false);
             }
         }

@@ -1,6 +1,7 @@
-using KDH.Scripts.Survey;
+using KDH.Scripts.Surveies;
 using UnityEditor;
 using UnityEngine;
+using static Codice.CM.Common.Serialization.Replication.BasePackageReader;
 
 [CustomEditor(typeof(SurveyQuizSO))]
 public class CustomSurveyQuizSO : Editor
@@ -17,7 +18,15 @@ public class CustomSurveyQuizSO : Editor
 
         if (weirdQuizProperty.boolValue) // 가져왔던 데이터, bool
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("weiredAnswerReward"), new GUIContent("이상현상 설문조사 설정")); // 인스펙터에 그리기
+            var isWeird = serializedObject.FindProperty("isWeird");
+            EditorGUILayout.PropertyField(isWeird, new GUIContent("정답 설정"));
+
+            if (isWeird.boolValue)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("weirdEventSO"), new GUIContent("이벤트"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("damage"), new GUIContent("데미지 설정")); // 인스펙터에 그리기
+            }
+
         }
         else
         {

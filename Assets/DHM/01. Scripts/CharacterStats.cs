@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class SurvivorStats
+public class CharacterStats
 {
     public string characterName;
 
@@ -14,6 +14,7 @@ public class SurvivorStats
     [Header("일일 감소량")]
     public float hungerDecreasePerDay = 2.5f;
     public float thirstDecreasePerDay = 1.5f;
+
     public void Init()
     {
         currentHunger = maxHunger;
@@ -27,5 +28,17 @@ public class SurvivorStats
 
         currentHunger = Mathf.Max(0f, currentHunger);
         currentThirst = Mathf.Max(0f, currentThirst);
+    }
+
+    public void RestoreHunger(float amount)
+    {
+        currentHunger += amount;
+        currentHunger = Mathf.Clamp(currentHunger, 0f, maxHunger);
+    }
+
+    public void RestoreThirst(float amount)
+    {
+        currentThirst += amount;
+        currentThirst = Mathf.Clamp(currentThirst, 0f, maxThirst);
     }
 }

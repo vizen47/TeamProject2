@@ -3,9 +3,9 @@ using KDH.Scripts.UIs;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace KDH.Scripts.Laptops
+namespace KDH.Scripts.Notebooks
 {
-    public class Laptop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class Notebook : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [field: SerializeField] public GameObject MonitorScreen { get; private set; }
         [field: SerializeField] public GameObject Keyboard { get; private set; }

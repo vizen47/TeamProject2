@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace KDH.Scripts.Laptops
+namespace KDH.Scripts.Notebooks
 {
-    public class LaptopController : MonoBehaviour
+    public class NotebookController : MonoBehaviour
     {
         [SerializeField] private ApplicationController _application;
         

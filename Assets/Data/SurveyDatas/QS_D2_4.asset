@@ -10,22 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18934e7e875cc9543ad6b49caf533b36, type: 3}
-  m_Name: Test 10
+  m_Name: QS_D2_4
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Survey.SurveyQuizSO
-  level: 1
-  mainQuizText: "\uC774\uAC74 \uD14C\uC2A4\uD2B8 \uC124\uBB38\uC870\uC0AC10\uC785\uB2C8\uB2E4."
+  mainQuizText: "\uBB3C\uC790\uC5D0\uC11C \uC815\uC0C1\uC801\uC774\uC9C0 \uC54A\uC740
+    \uC369\uC740\uB0B4\uAC00 \uB09C \uC801\uC774 \uC788\uC73C\uC2ED\uB2C8\uAE4C?"
   weirdQuiz: 0
+  weirdEventSO: {fileID: 0}
   normalAnswer: 0
   weirdAnswer: 0
   normalAnswerReward:
-  - credit: 125
+  - credit: 10
     answer: 0
-  - credit: 125
-    answer: 1
-  - credit: 125
+  - credit: 20
     answer: 2
-  weiredAnswerReward:
-  - credit: 200
-    answer: 0
-  - credit: 100
+  - credit: 10
     answer: 1
+  isWeird: 0
+  damage: 0

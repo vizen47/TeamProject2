@@ -7,7 +7,6 @@ namespace KDH.Scripts.Systems
 {
     public class GameManager : MonoBehaviour
     {
-        // 깃?
         [Header("Settings")]
         public SurveyQuizSO CurrentSurvey { get; set; }
         public int CurrentDay { get; private set; }

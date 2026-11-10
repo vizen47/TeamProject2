@@ -6,14 +6,14 @@ namespace KDH.Scripts
     public class ApplicationController : MonoBehaviour
     {
         [SerializeField] private GameObject[] childGO;
-        private IApplicable[] _applicable = new IApplicable[2];
+        public IApplicable[] Applicable { get; private set; } = new IApplicable[2];
         public IApplicable CurrentApplication { get; private set; }
 
         void Awake()
         {
             for(int i = 0; i < childGO.Length; i++)
             {
-                _applicable[i] = childGO[i].GetComponent<IApplicable>();
+                Applicable[i] = childGO[i].GetComponent<IApplicable>();
             }
         }
         
@@ -31,16 +31,17 @@ namespace KDH.Scripts
 
         public void DisableApplications()
         {
-            foreach (var entity in _applicable)
+            foreach (var entity in Applicable)
             {
-                entity.TargetApplication.SetActive(true);
-                entity.HandleChangeActive();
+                entity.TargetApplication.SetActive(false);
+                entity.TargetApplication.transform.localScale = Vector3.zero;
+                entity.WorkApp.SetActive(false);
             }
         }
 
         public void DisableWorkFrameApps()
         {
-            foreach (var entity in _applicable)
+            foreach (var entity in Applicable)
                 entity.SetUnEnableWorkApp(false);
         }
     }

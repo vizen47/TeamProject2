@@ -48,16 +48,16 @@ namespace KDH.Scripts
             OnChangeLife?.Invoke(Life);
         }
 
+#if UNITY_EDITOR
         private void Update()
         {
-# if UNITY_EDITOR
             if (Keyboard.current.tKey.wasPressedThisFrame)
             {
                 foreach (var i in _itemDict)
                     Debug.Log(i.Key.itemName + ": " + i.Value);
             }
-# endif
         }
+# endif
         
         private void OnDestroy()
         {

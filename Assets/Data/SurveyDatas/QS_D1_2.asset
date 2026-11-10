@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18934e7e875cc9543ad6b49caf533b36, type: 3}
-  m_Name: Test 2
+  m_Name: QS_D1_2
   m_EditorClassIdentifier: Assembly-CSharp::KDH.Scripts.Survey.SurveyQuizSO
-  mainQuizText: "\uC774\uAC74 \uD14C\uC2A4\uD2B8 \uC124\uBB38\uC870\uC0AC2\uC785\uB2C8\uB2E4."
+  mainQuizText: "\uB300\uD53C \uACFC\uC815\uC5D0\uC11C \uBD80\uC0C1\uC744 \uC785\uC73C\uC168\uC2B5\uB2C8\uAE4C?"
   weirdQuiz: 0
   weirdEventSO: {fileID: 0}
   normalAnswer: 0
   weirdAnswer: 0
   normalAnswerReward:
-  - credit: 67
+  - credit: 20
     answer: 0
-  - credit: 0
-    answer: 1
-  - credit: 0
+  - credit: 20
     answer: 2
+  - credit: 10
+    answer: 1
   isWeird: 0
   damage: 0

@@ -1,5 +1,4 @@
 using KDH.Scripts.UIs;
-using TMPro;
 using UnityEngine;
 
 namespace KDH.Scripts.Systems

@@ -19,7 +19,7 @@ namespace KDH.Scripts.Stores
             
             purchaseBtn.onClick.AddListener(() =>
             {
-                _resourceManager.GetItem(_itemhandler.ItemData, 1);
+                _resourceManager.AddDeliveryItem(_itemhandler.ItemData, 1);
                 _resourceManager.UseCredit(_itemhandler.ItemData.cost);
             });
         }

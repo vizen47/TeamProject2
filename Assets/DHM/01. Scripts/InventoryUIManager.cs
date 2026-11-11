@@ -133,7 +133,7 @@ namespace DHM
                 if (itemCountText != null)
                     itemCountText.text = $"º¸À¯ : {itemCounts[currentSelectedItem]}°³";
 
-                //GameManager.Instance.UseItemOnCharacter(currentSelectedItem, target);
+                GameManager.Instance.UseItemOnCharacter(currentSelectedItem, target);
 
                 UpdatePreviewHPText();
             }

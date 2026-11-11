@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da644b7275bb00f4b9e3807f4180b57c, type: 3}
+  m_Name: Toy Gun
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  itemID: ToyGun
+  itemName: "\uC7A5\uB09C\uAC10 \uCD1D"
+  icon: {fileID: 0}
+  description: "\uC7A5\uB09C\uAC10 \uCD1D\uC778\uB370 \uC65C \uC2E4\uD0C4\uC774\n\uC7A5\uC804\uB418\uC5B4
+    \uC788\uB294\uAC70\uC9C0...?"
+  cost: 5
+  recoveryType: 2
+  hungerAmount: 0
+  thirstAmount: 0
+  specialEvent: 0

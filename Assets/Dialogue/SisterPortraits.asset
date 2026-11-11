@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353b69cbc26014088f4371b57dfa0c, type: 3}
+  m_Name: SisterPortraits
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterPortraits
+  speakerName: "\uBC31\uD558\uC5F0"
+  defaultExpression: dissatisfied
+  expressions:
+  - key: dissatisfied
+    sprite: {fileID: -7227429626908990476, guid: 82db96cc679df414dbba980865dfbe0e, type: 3}

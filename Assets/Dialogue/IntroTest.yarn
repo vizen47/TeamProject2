@@ -1,0 +1,19 @@
+﻿title: IntroTest
+---
+백하연: 안녕! 내가 뭐라고 말하는지 잘 보여? #portrait:thinking
+백하연: ... 잘 보이냐고 #portrait:dissatisfied
+-> 응
+    백하연: 그래? 다행이네 #portrait:smirk
+    <<jump Talk_End>>
+-> 아니
+    백하연: 뭐래
+    <<jump Talk_End>>
+===
+
+title: Talk_End
+position: 0,180
+---
+백하연: 이제 볼 일은 다 봤으니까, 끝내도록 할게
+-> 그래
+    백하연: 안녕
+===

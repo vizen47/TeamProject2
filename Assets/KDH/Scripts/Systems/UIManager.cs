@@ -1,5 +1,4 @@
-using KDH.Scripts.CoreLib;
-using KDH.Scripts.UI;
+using KDH.Scripts.UIs;
 using UnityEngine;
 
 namespace KDH.Scripts.Systems
@@ -10,5 +9,6 @@ namespace KDH.Scripts.Systems
         [field: SerializeField] public FadeInOutUI FadeInOutUI { get; private set; }
         [field: SerializeField] public NextDayFadeInOutUI NextDayFadeInOutUI { get; private set; }
         [field: SerializeField] public UpdateCreditText CreditText { get; private set; }
+        [field: SerializeField] public HealthText HealthText { get; private set; }
     }
 }

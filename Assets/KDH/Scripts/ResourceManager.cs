@@ -22,31 +22,47 @@ namespace KDH.Scripts
             }
         }
 
+        private int _life = 10;
+
+        public int Life
+        {
+            get => _life;
+            set
+            {
+                _life = Mathf.Max(0, value);
+                OnChangeLife?.Invoke(Life);
+            }
+        }
+
         public event Action<int> OnCreditChange;
+        public event Action<int> OnChangeLife;
 
         private readonly Dictionary<ItemSO, int> _itemDict = new();
 
         private void Start()
         {
             OnCreditChange += _uiManager.CreditText.SetCreditText;
-            
+            OnChangeLife += _uiManager.HealthText.ChangeHealthText;
+
             OnCreditChange?.Invoke(Credit);
+            OnChangeLife?.Invoke(Life);
         }
 
+#if UNITY_EDITOR
         private void Update()
         {
-# if UNITY_EDITOR
             if (Keyboard.current.tKey.wasPressedThisFrame)
             {
                 foreach (var i in _itemDict)
                     Debug.Log(i.Key.itemName + ": " + i.Value);
             }
-# endif
         }
+# endif
         
         private void OnDestroy()
         {
             OnCreditChange -= _uiManager.CreditText.SetCreditText;
+            OnChangeLife -= _uiManager.HealthText.ChangeHealthText;
         }
 
         public void GetItem(ItemSO item, int count)
@@ -57,6 +73,10 @@ namespace KDH.Scripts
         public void GetCredit(int amount)
         {
             Credit += amount;
+        }
+        public void GetLife(int amount)
+        {
+            Life += amount;
         }
         
         public void UseCredit(int amount)
@@ -69,6 +89,11 @@ namespace KDH.Scripts
             }
             
             Credit -= amount;
+        }
+
+        public void SubstractLife(int amount)
+        {
+            Life -= amount;
         }
     }
 }

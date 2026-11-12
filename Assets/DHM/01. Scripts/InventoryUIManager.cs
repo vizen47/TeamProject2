@@ -10,10 +10,10 @@ namespace DHM
         [Header("카테고리 패널")]
         public GameObject foodCategoryPanel;
 
-        [Header("우측 상세 정보 UI (지정하신 이름들)")]
+        [Header("우측 상세 정보 UI")]
         public Image itemIconImage;
         public TextMeshProUGUI itemNameText;
-        public TextMeshProUGUI itemDescText;
+        public TextMeshProUGUI itemDescriptionText;
         public TextMeshProUGUI itemCountText;
 
         [Header("초상화 하단 허기/갈증 변화 텍스트")]
@@ -51,7 +51,7 @@ namespace DHM
 
             if (itemIconImage != null) itemIconImage.sprite = clickedItem.icon;
             if (itemNameText != null) itemNameText.text = clickedItem.itemName;
-            if (itemDescText != null) itemDescText.text = clickedItem.description;
+            if (itemDescriptionText != null) itemDescriptionText.text = clickedItem.description;
             if (itemCountText != null) itemCountText.text = $"보유 : {itemCounts[clickedItem]}개";
 
             UpdatePreviewHPText();
@@ -68,22 +68,9 @@ namespace DHM
                 float maxH = GameManager.Instance.player.maxHunger;
                 float maxT = GameManager.Instance.player.maxThirst;
 
-                if (currentSelectedItem.recoveryType == RecoveryType.Hunger)
-                {
-                    float afterH = Mathf.Clamp(currentH + currentSelectedItem.hungerAmount, 0f, maxH);
-                    playerHPText.text = $"허기: {currentH} -> {afterH}";
-                }
-                else if (currentSelectedItem.recoveryType == RecoveryType.Thirst)
-                {
-                    float afterT = Mathf.Clamp(currentT + currentSelectedItem.thirstAmount, 0f, maxT);
-                    playerHPText.text = $"갈증: {currentT} -> {afterT}";
-                }
-                else if (currentSelectedItem.recoveryType == RecoveryType.Both)
-                {
-                    float afterH = Mathf.Clamp(currentH + currentSelectedItem.hungerAmount, 0f, maxH);
-                    float afterT = Mathf.Clamp(currentT + currentSelectedItem.thirstAmount, 0f, maxT);
-                    playerHPText.text = $"허기: {currentH}->{afterH} / 갈증: {currentT}->{afterT}";
-                }
+                float afterH = Mathf.Clamp(currentH + currentSelectedItem.hungerAmount, 0f, maxH);
+                float afterT = Mathf.Clamp(currentT + currentSelectedItem.thirstAmount, 0f, maxT);
+                playerHPText.text = $"허기: {currentH} -> {afterH}\n갈증: {currentT} -> {afterT}";
             }
 
             if (sisterHPText != null)
@@ -93,22 +80,9 @@ namespace DHM
                 float maxH = GameManager.Instance.sister.maxHunger;
                 float maxT = GameManager.Instance.sister.maxThirst;
 
-                if (currentSelectedItem.recoveryType == RecoveryType.Hunger)
-                {
-                    float afterH = Mathf.Clamp(currentH + currentSelectedItem.hungerAmount, 0f, maxH);
-                    sisterHPText.text = $"허기: {currentH} -> {afterH}";
-                }
-                else if (currentSelectedItem.recoveryType == RecoveryType.Thirst)
-                {
-                    float afterT = Mathf.Clamp(currentT + currentSelectedItem.thirstAmount, 0f, maxT);
-                    sisterHPText.text = $"갈증: {currentT} -> {afterT}";
-                }
-                else if (currentSelectedItem.recoveryType == RecoveryType.Both)
-                {
-                    float afterH = Mathf.Clamp(currentH + currentSelectedItem.hungerAmount, 0f, maxH);
-                    float afterT = Mathf.Clamp(currentT + currentSelectedItem.thirstAmount, 0f, maxT);
-                    sisterHPText.text = $"허기: {currentH}->{afterH} / 갈증: {currentT}->{afterT}";
-                }
+                float afterH = Mathf.Clamp(currentH + currentSelectedItem.hungerAmount, 0f, maxH);
+                float afterT = Mathf.Clamp(currentT + currentSelectedItem.thirstAmount, 0f, maxT);
+                sisterHPText.text = $"허기: {currentH} -> {afterH}\n갈증: {currentT} -> {afterT}";
             }
         }
 

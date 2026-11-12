@@ -67,7 +67,7 @@ namespace DHM
             {
                 if (testItem != null)
                 {
-                    UseItemOnCharacter(testItem, player);
+                    UseItemOnCharacter(testItem, sister);
                 }
                 else
                 {

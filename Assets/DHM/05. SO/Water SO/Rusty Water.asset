@@ -15,9 +15,9 @@ MonoBehaviour:
   itemID: RustyWater
   itemName: "\uB179\uBB3C"
   icon: {fileID: 0}
-  description: "\uBAB8\uC5D0 \uC911\uAE08\uC18D\uC774\n\uC313\uC774\uB294 \uB9DB\uC774\uC57C..."
+  description: "\uBAB8\uC5D0 \uC911\uAE08\uC18D\uC774 \uC313\uC774\uB294 \uAE30\uBD84..."
   cost: 5
-  recoveryType: 1
+  type: 0
   hungerAmount: 0
   thirstAmount: 0.5
   specialEvent: 0

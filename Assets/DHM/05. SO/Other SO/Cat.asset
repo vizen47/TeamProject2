@@ -15,10 +15,10 @@ MonoBehaviour:
   itemID: Cat
   itemName: "\uACE0\uC591\uC774"
   icon: {fileID: 0}
-  description: "\uAC89\uBCF4\uAE30\uC5D4 \uADC0\uC5FD\uC9C0\uB9CC\n\uC740\uADFC\uD788
+  description: "\uAC89\uBCF4\uAE30\uC5D4 \uADC0\uC5FD\uC9C0\uB9CC \uC740\uADFC\uD788
     \uAE4C\uCE60\uD558\uB2E4."
   cost: 5
-  recoveryType: 2
+  type: 0
   hungerAmount: 0
   thirstAmount: 0
   specialEvent: 0

@@ -15,9 +15,9 @@ MonoBehaviour:
   itemID: TapWater
   itemName: "\uC218\uB3D7\uBB3C"
   icon: {fileID: 0}
-  description: "\uD141\uD141\uD558\uAE34 \uD574\uB3C4\n\uB179\uBB3C\uBCF4\uB2E8 \uB9DB\uC788\uB2E4"
+  description: "\uD141\uD141\uD558\uAE34 \uD574\uB3C4 \uB179\uBB3C\uBCF4\uB2E8 \uB9DB\uC788\uC5B4"
   cost: 5
-  recoveryType: 1
+  type: 0
   hungerAmount: 0
   thirstAmount: 1.5
   specialEvent: 0

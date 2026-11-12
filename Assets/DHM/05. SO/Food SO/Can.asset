@@ -15,9 +15,9 @@ MonoBehaviour:
   itemID: Can
   itemName: "\uD1B5\uC870\uB9BC"
   icon: {fileID: 0}
-  description: "\uC774 \uD1B5\uC870\uB9BC\uC740 \r\n\uBB34\uC2A8 \uD1B5\uC870\uB9BC\uC77C\uAE4C?"
+  description: "\uC774 \uD1B5\uC870\uB9BC\uC740 \uBB34\uC2A8 \uD1B5\uC870\uB9BC\uC77C\uAE4C?"
   cost: 5
-  recoveryType: 0
+  type: 0
   hungerAmount: 4
   thirstAmount: 0
   specialEvent: 0

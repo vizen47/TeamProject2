@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: -2620639434606673434, guid: b06a121997a78ee4b8d2a76f8ab3e566, type: 3}
   description: "\uB0E0\uB0E0\uCC39\uCC39"
   cost: 5
-  recoveryType: 2
+  type: 0
   hungerAmount: 5
   thirstAmount: 2
   specialEvent: 1

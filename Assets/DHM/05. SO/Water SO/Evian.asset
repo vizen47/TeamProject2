@@ -15,10 +15,10 @@ MonoBehaviour:
   itemID: Evian
   itemName: "\uC5D0\uBE44\uC559"
   icon: {fileID: 0}
-  description: "\uC5D0\uBE44\uC559\uC774 \uB9DB\uC788\uB2E4\uACE0\n\uD574\uBD10\uC57C
+  description: "\uC5D0\uBE44\uC559\uC774 \uB9DB\uC788\uB2E4\uACE0 \uD574\uBD10\uC57C
     \uACA8\uC6B0 11~12\uBC30...\n"
   cost: 5
-  recoveryType: 1
+  type: 0
   hungerAmount: 0
   thirstAmount: 3.5
   specialEvent: 0

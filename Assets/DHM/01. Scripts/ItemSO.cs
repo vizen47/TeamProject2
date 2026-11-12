@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public enum RecoveryType
+public enum Type
 {
-    Hunger,
-    Thirst,
-    Both
+    Food,
+    Drink,
+    Tool,
+    misc
 }
 
 public enum ItemSpecialEvent
@@ -25,7 +26,7 @@ public class ItemSO : ScriptableObject
     public int cost;
 
     [Header("회복 설정")]
-    public RecoveryType recoveryType;
+    public Type type;
     public float hungerAmount;
     public float thirstAmount;
 
@@ -40,20 +41,7 @@ public class ItemSO : ScriptableObject
             return;
         }
 
-        switch (recoveryType)
-        {
-            case RecoveryType.Hunger:
-                target.RestoreHunger(hungerAmount);
-                break;
-
-            case RecoveryType.Thirst:
-                target.RestoreThirst(thirstAmount);
-                break;
-
-            case RecoveryType.Both:
-                target.RestoreHunger(hungerAmount);
-                target.RestoreThirst(thirstAmount);
-                break;
-        }
+        target.RestoreHunger(hungerAmount);
+        target.RestoreThirst(thirstAmount);
     }
 }

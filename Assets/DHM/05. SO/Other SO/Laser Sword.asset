@@ -15,11 +15,9 @@ MonoBehaviour:
   itemID: Laser Sword
   itemName: "\uAD11\uC120\uAC80"
   icon: {fileID: 0}
-  description: 'I, am your
-
-    father.'
+  description: I, am your father.
   cost: 5
-  recoveryType: 2
+  type: 0
   hungerAmount: 0
   thirstAmount: 0
   specialEvent: 0

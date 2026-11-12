@@ -21,14 +21,6 @@ namespace KDH.Scripts.Mails
             }
         }
 
-        private void Update()
-        {
-            if (Keyboard.current.tKey.wasPressedThisFrame)
-            {
-                _mailBoxController.HandleChangeActive();
-            }
-        }
-
         private void OnDestroy()
         {
             _mailBoxController.CollectBtn.onClick.RemoveAllListeners();

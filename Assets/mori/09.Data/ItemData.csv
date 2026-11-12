@@ -1,4 +1,4 @@
-id, name, info, price, hunger, thirst, use, type
+id, name, info, price, hunger, thirst, uses, type
 1, 통조림, 테스트, 30, 1.5, 0, 1, food
 2, 육포, 딱딱해보이는 말린 소고기, 40, 2, 0, 1, food
 3, 고추참치 통조림, 매콤한 맛 아이좋아 밥도둑이야, 50, 3, 0, 1, food

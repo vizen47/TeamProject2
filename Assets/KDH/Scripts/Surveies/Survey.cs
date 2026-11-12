@@ -50,7 +50,7 @@ namespace KDH.Scripts.Surveies
                 {
                     if (survey.normalAnswerReward[i].answer == _normalAnswers[i])
                     {
-                        _gameManager.ResourceManager.GetCredit(survey.normalAnswerReward[i].credit);
+                        _gameManager.Resources.GetCredit(survey.normalAnswerReward[i].credit);
                         break;
                     }
                 }
@@ -67,7 +67,7 @@ namespace KDH.Scripts.Surveies
 
                 if (suvey == true && !weirdResult[cnt])
                 {
-                    _gameManager.ResourceManager.SubstractLife(surveys[cnt].damage);
+                    _gameManager.Resources.SubstractLife(surveys[cnt].damage);
                 }
                 else if (suvey == false && weirdResult[cnt])
                 {

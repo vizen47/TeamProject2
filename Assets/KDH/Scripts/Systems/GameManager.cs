@@ -1,3 +1,4 @@
+using KDH.Scripts.Mails;
 using KDH.Scripts.Stores;
 using KDH.Scripts.Surveies;
 using KDH.Scripts.WeirdEvents;
@@ -16,11 +17,12 @@ namespace KDH.Scripts.Systems
         public DailySurveyListSO TodaySurveies { get; set; }
         [Header("Modules")]
         [field: SerializeField] public WeirdEventManager WeirdEventManager { get; private set; }
-        [field: SerializeField] public ResourceManager ResourceManager { get; private set; }
+        [field: SerializeField] public ResourceManager Resources { get; private set; }
         [field: SerializeField] public UIManager UIManager { get; private set; }
         [field: SerializeField] public Survey Survey { get; private set; }
         [field: SerializeField] public StoreUI StoreUI { get; private set; }
         [field: SerializeField] public Store Store { get; private set; }
+        [field: SerializeField] public Mail MailObj { get; private set; }
 
         private void Awake()
         {
@@ -43,7 +45,12 @@ namespace KDH.Scripts.Systems
             Debug.Log($"현재 {CurrentDay}일차");
 #endif
 
+            foreach (var d in Resources.DeliveryItemDict)
+            {
+                Resources.AddMailItem(d.Key, d.Value);
+            }
 
+            MailObj.InitItem(Resources.DeliveryItemDict);
             Survey.ResetTodaySurvey();
             Survey.InitSurveyQuiz();
             Store.ResetItems();

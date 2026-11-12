@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da644b7275bb00f4b9e3807f4180b57c, type: 3}
-  m_Name: Bad Apple
+  m_Name: Rusty Water
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemID: BadApple
-  itemName: "\uB098\uC05C \uC0AC\uACFC"
+  itemID: RustyWater
+  itemName: "\uB179\uBB3C"
   icon: {fileID: 0}
-  description: 'Bad Apple!!
-
-    feat. nomico'
+  description: "\uBAB8\uC5D0 \uC911\uAE08\uC18D\uC774 \uC313\uC774\uB294 \uAE30\uBD84..."
   cost: 5
-  recoveryType: 2
-  hungerAmount: 3
-  thirstAmount: 3
-  specialEvent: 1
+  type: 1
+  hungerAmount: 0
+  thirstAmount: 0.5
+  specialEvent: 0

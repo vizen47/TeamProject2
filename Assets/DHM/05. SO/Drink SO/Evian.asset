@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da644b7275bb00f4b9e3807f4180b57c, type: 3}
-  m_Name: Toy Gun
+  m_Name: Evian
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemID: ToyGun
-  itemName: "\uC7A5\uB09C\uAC10 \uCD1D"
+  itemID: Evian
+  itemName: "\uC5D0\uBE44\uC559"
   icon: {fileID: 0}
-  description: "\uC7A5\uB09C\uAC10 \uCD1D\uC778\uB370 \uC65C \uC2E4\uD0C4\uC774 \uC7A5\uC804\uB418\uC5B4
-    \uC788\uB294\uAC70\uC9C0...?"
+  description: "\uBB3C\uC744 \uACE0\uAE09\uC9C0\uAC8C \uB9C8\uC2DC\uB294 \uBC29\uBC95."
   cost: 5
-  type: 0
+  type: 1
   hungerAmount: 0
-  thirstAmount: 0
+  thirstAmount: 3.5
   specialEvent: 0

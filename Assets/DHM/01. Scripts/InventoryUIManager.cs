@@ -7,10 +7,13 @@ namespace DHM
 {
     public class InventoryUIManager : MonoBehaviour
     {
-        [Header("카테고리 패널")]
-        public GameObject foodCategoryPanel;
+        [Header("카테고리")]
+        public GameObject foodCategory;
+        public GameObject drinkCategory;
+        public GameObject toolCategory;
 
         [Header("우측 상세 정보 UI")]
+        public GameObject itemInfoPanel;
         public Image itemIconImage;
         public TextMeshProUGUI itemNameText;
         public TextMeshProUGUI itemDescriptionText;
@@ -25,16 +28,43 @@ namespace DHM
 
         private void Start()
         {
-            if (foodCategoryPanel != null)
-                foodCategoryPanel.SetActive(false);
+            if (foodCategory != null)
+                foodCategory.SetActive(false);
+
+            if (drinkCategory != null)
+                drinkCategory.SetActive(false);
+
+            if (toolCategory != null)
+                toolCategory.SetActive(false);
+
+            if (itemInfoPanel != null)
+                itemInfoPanel.SetActive(false);
         }
 
         public void OnClickFoodCategoryButton()
         {
-            if (foodCategoryPanel != null)
+            if (foodCategory != null)
             {
-                bool isActive = foodCategoryPanel.activeSelf;
-                foodCategoryPanel.SetActive(!isActive);
+                bool isActive = foodCategory.activeSelf;
+                foodCategory.SetActive(!isActive);
+            }
+        }
+
+        public void OnClickDrinkCategoryButton()
+        {
+            if (drinkCategory != null)
+            {
+                bool isActive = drinkCategory.activeSelf;
+                drinkCategory.SetActive(!isActive);
+            }
+        }
+
+        public void OnClickToolCategoryButton()
+        {
+            if (toolCategory != null)
+            {
+                bool isActive = toolCategory.activeSelf;
+                toolCategory.SetActive(!isActive);
             }
         }
 
@@ -49,6 +79,9 @@ namespace DHM
                 itemCounts[clickedItem] = 5;
             }
 
+            if (itemInfoPanel != null)
+                itemInfoPanel.SetActive(true);
+
             if (itemIconImage != null) itemIconImage.sprite = clickedItem.icon;
             if (itemNameText != null) itemNameText.text = clickedItem.itemName;
             if (itemDescriptionText != null) itemDescriptionText.text = clickedItem.description;
@@ -57,9 +90,17 @@ namespace DHM
             UpdatePreviewHPText();
         }
 
-        private void UpdatePreviewHPText()
+        public void CloseItemPanel()
         {
-            if (currentSelectedItem == null) return;
+            if (itemInfoPanel != null)
+                itemInfoPanel.SetActive(false);
+
+            currentSelectedItem = null;
+        }
+
+        public void UpdatePreviewHPText()
+        {
+            if (itemInfoPanel == null || !itemInfoPanel.activeSelf || currentSelectedItem == null) return;
 
             if (playerHPText != null)
             {

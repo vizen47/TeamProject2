@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da644b7275bb00f4b9e3807f4180b57c, type: 3}
-  m_Name: Rusty Water
+  m_Name: Tap Water
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemID: RustyWater
-  itemName: "\uB179\uBB3C"
+  itemID: TapWater
+  itemName: "\uC218\uB3D7\uBB3C"
   icon: {fileID: 0}
-  description: "\uBAB8\uC5D0 \uC911\uAE08\uC18D\uC774 \uC313\uC774\uB294 \uAE30\uBD84..."
+  description: "\uD141\uD141\uD558\uAE34 \uD574\uB3C4 \uB179\uBB3C\uBCF4\uB2E8 \uB9DB\uC788\uC5B4"
   cost: 5
-  type: 0
+  type: 1
   hungerAmount: 0
-  thirstAmount: 0.5
+  thirstAmount: 1.5
   specialEvent: 0
